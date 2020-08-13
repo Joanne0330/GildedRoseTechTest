@@ -8,7 +8,6 @@ describe Item do
       expect(item.item_name).to eq("Quality Ham")
     end
    
-
     
 end
 

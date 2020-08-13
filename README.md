@@ -1,6 +1,6 @@
 Gilded Rose Test
 
-This is a tech test which I am using Ruby and Rsepc for test coverage.
+This is a tech test to refactor existing codes. I am using Ruby and Rsepc for test coverage.
 
 **How it works**
 
@@ -23,12 +23,4 @@ We have recently signed a supplier of conjured items. This requires an update to
 Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, do not alter the Item class or Items property as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn’t believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we’ll cover for you)."*
 ```
 
-**My Design**
 
-I will use two classes:
-
-```
-Item Class: responsible for contatin information on each item with it's 'name', 'sell by date', and 'quality value'
-
-Quality_Control Class: the Item Class is then passed on by class injection and will use the 'update_quality' method to update the value of the item, depending on what it is and how many days has passed
-```
