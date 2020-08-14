@@ -11,12 +11,12 @@ class GildedRose
         when < 50    
           case item.name
             when "Aged Brie"
-              if item.sell_in -= days_passed
-                item.quality += days_passed
-              end      
+              item.sell_in -= days_passed
+              item.quality += days_passed
+                   
             when "Backstage Passes"
-              if item.sell_in -= days_passed 
-                if item.sell_in == 0
+              item.sell_in -= days_passed 
+                if item.sell_in <= 0
                   item.quality == 0
                 elsif item.sell_in > 0 && <= 5
                   item.quality += 3 * days_passed
@@ -25,21 +25,20 @@ class GildedRose
                 else
                   item.quality += days_passed
                 end
-              end
+
             when "Sulfuras"
               item.quality = "This is a legendary item. It's timeless!"  
             when "Conjured items"
-              if item.sell_in -= days_passed
-                item.quality += 2 * days_passed
-              end
+              item.sell_in -= days_passed
+              item.quality += 2 * days_passed
+            
             else
-              if item.sell_in -= days_passed
-                if item.sell_in == 0
+              item.sell_in -= days_passed
+                if item.sell_in <= 0
                     item.quality -= 2 * days_passed
                 else
                     item.quality -= days_passed
                 end
-              end
             end
           else
              puts "Item Quality cannot be over 50"    
