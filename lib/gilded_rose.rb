@@ -7,8 +7,8 @@ class GildedRose
   
   def update_quality(days_passed)
     @items.each do |item|
-      case item.quality
-        when item.quality < 50    
+      case item[2]
+        when item[2] < 50    
           case item.name
             when "Aged Brie"
               item.sell_in -= days_passed
@@ -34,11 +34,11 @@ class GildedRose
               item.quality += 2 * days_passed
             
             else
-              item.sell_in -= days_passed
-                if item.sell_in <= 0
-                    item.quality -= 2 * days_passed
+              item[1] -= days_passed
+                if item[1] <= 0
+                    item[2] -= 2 * days_passed
                 else
-                    item.quality -= days_passed
+                    item[2] -= days_passed
                 end
             end
           else
@@ -50,17 +50,19 @@ class GildedRose
 end
   
 class Item
-  attr_accessor :name, :sell_in, :quality, :items
+  attr_reader :items
   
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
+  def initialize
     @items = []
-    strings_of_items
+  end
+
+  def add(name, sell_in, quality)
+    item = []
+    item = [name, sell_in, quality]
+    items_for_sale(item)
   end
   
-  def strings_of_items
-    @items << "#{@name}, #{@sell_in}, #{@quality}"
+  def items_for_sale(item)
+    @items << item
   end
 end
