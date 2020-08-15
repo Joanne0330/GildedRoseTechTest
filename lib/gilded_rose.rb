@@ -1,53 +1,60 @@
 class GildedRose
 
-  def initialize(item = Item.new)
-    @items = item.items
+  def initialize(items = Item.new)
+    @items = items
     @items_array = []
   end
   
   def update_quality(days_passed)
     @items.each do |item|
-      case item[2]
-        when item[2] < 50    
-          case item.name
-            when "Aged Brie"
-              item.sell_in -= days_passed
-              item.quality += days_passed
+  
+    #   case item[2]
+    #     when item[2] < 50    
+    #       case item.name
+    #         when "Aged Brie"
+    #           item.sell_in -= days_passed
+    #           item.quality += days_passed
 
-            when "Backstage Passes"
-              item.sell_in -= days_passed 
-                if item.sell_in <= 0
-                  item.quality == 0
-                elsif item.sell_in > 0 && item.sell_in <= 5
-                  item.quality += 3 * days_passed
-                elsif item.sell_in > 5 && item.sell_in <= 10
-                  item.quality += 2 * days_passed
-                else
-                  item.quality += days_passed
-                end
+    #         when "Backstage Passes"
+    #           item.sell_in -= days_passed 
+    #             if item.sell_in <= 0
+    #               item.quality == 0
+    #             elsif item.sell_in > 0 && item.sell_in <= 5
+    #               item.quality += 3 * days_passed
+    #             elsif item.sell_in > 5 && item.sell_in <= 10
+    #               item.quality += 2 * days_passed
+    #             else
+    #               item.quality += days_passed
+    #             end
 
-            when "Sulfuras"
-              item.quality = "This is a legendary item. It's timeless!"  
+    #         when "Sulfuras"
+    #           item.quality = "This is a legendary item. It's timeless!"  
 
-            when "Conjured items"
-              item.sell_in -= days_passed
-              item.quality += 2 * days_passed
+    #         when "Conjured items"
+    #           item.sell_in -= days_passed
+    #           item.quality += 2 * days_passed
             
-            else
+    #         else
               item[1] -= days_passed
-                if item[1] <= 0
-                    item[2] -= 2 * days_passed
-                else
+    #             if item[1] <= 0
+    #                 item[2] -= 2 * days_passed
+    #             else
                     item[2] -= days_passed
-                end
-            end
-          else
-            puts "Item Quality cannot be over 50"    
-        end
+    #             end
+    #         end
+    #       else
+    #         puts "Item Quality cannot be over 50"    
+    #     end
+       
+     
       end
-    @items_array << item
   end
 end
+
+# a = [["ham", 10, 10], ["coffee", 20, 20]]
+# a.each do |b|
+#    print [b[0], b[1] - 1, b[1] - 1 ]
+# end
   
 class Item
   attr_reader :items
