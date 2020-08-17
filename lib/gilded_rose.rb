@@ -26,11 +26,13 @@ class GildedRose
   def update_quality
     @items.each do |item|
       if item[2] > 50 
-        item[2] = "Item quality cannot be over 50!"   
-      #     case item.name
-      #       when "Aged Brie"
-      #         item.sell_in -= days_passed
-      #         item.quality += days_passed
+        item[2] = "Item quality cannot be over 50!"  
+      else   
+          case item[0]
+            when "Aged Brie"
+              sell_in = item[1] -= 1
+              quality = item[2] += 1
+    
 
       #       when "Backstage Passes"
       #         item.sell_in -= days_passed 
@@ -51,15 +53,15 @@ class GildedRose
       #         item.sell_in -= days_passed
       #         item.quality += 2 * days_passed
             
-      else
-        sell_in = item[1] -= 1
+            else
+              sell_in = item[1] -= 1
       #           if item[1] <= 0
       #               item[2] -= 2 * days_passed
       #           else
-        quality = item[2] -= 1
+              quality = item[2] -= 1
       #           end
-      #       end
-        p item = [item[0], sell_in, quality]
+            end
+         item = [item[0], sell_in, quality]
 
         
       end

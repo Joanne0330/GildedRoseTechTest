@@ -13,5 +13,10 @@ describe GildedRose do
       gr = GildedRose.new([["ham", 10, 55], ["coffee", 20, 20]])
       expect(gr.update_quality).to eq [["ham", 10, "Item quality cannot be over 50!"], ["coffee", 19, 19] ]
     end
+
+    it 'adds the quality for Aged Brie' do
+      gr = GildedRose.new([["Aged Brie", 10, 10]])
+      expect(gr.update_quality).to eq [["Aged Brie", 9, 11]]
+    end
   end
 end
